@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electric Nodes Location</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css" integrity="sha384-z4tVnCr80ZcL0iufVdGQSUzNvJsKjEtqYZjiQrrYKlpGow+btDHDfQWkFjoaz/Zr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+   
+</head>
+<body>
+   
+    <div class="map-container" id="map-container">
+
+        <div class="title-section">
+            <h2>Parkwind Status Tracker for Array Termination</h2>
+
+            <div class="date-section" id="date-section">
+                10/09/2022
+            </div>
+        </div>
+        
+
+        <div class="bar-chart">
+            <div class="title">Z01 - Array Termination progress</div>
+            <div id="bar-progress">
+
+            </div>
+        </div>
+
+        <div class="cable-progress" id="cable-progress">
+            <div>String Progress</div>
+        </div>
+
+
+        <div class="legend-section" id="legend-container">
+           <div id="termination-progress">
+               <div>Termination Progress</div>
+               <div class="termination-section">
+                   <div class="pie" id="pie-charts">
+                       <!-- pie chars -->
+                   </div>
+
+                   <div class="cable-legend">
+                       <div class="cable-section"></div>
+                   </div>
+               </div>
+           </div>
+        </div>
+
+        <div class="vessel-info">
+            <div class="header-section">WINDCAT 34</div>
+
+            <div class="ship-info" id="ship-info">
+                <!-- <div class="item-info">
+                    <b>MMSI:</b>
+                    <span>223838800</span>
+                </div> -->
+            </div>
+        </div>
+
+        <div class="filter-section" id="filter-section">
+            <div class="date-selection d-none">
+                <label for="datepicker">Select Date</label>
+                <div class="input-group date">
+                    <input type="text" class="form-control" value="12-02-2012" id="datepicker">
+                    <div class="input-group-addon">
+                        <!-- <i class="fa fa-calendar-days"></i> -->
+                        
+                        <i class="fa-solid fa-calendar" style="width: 30px; height: 100%;"></i>
+                        <!-- <span>
+                        </span> -->
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pdf-section">
+                <button class="btn" id="zoom-btn">Zoom To Vessel</button> 
+                <button class="btn btn-submit" id="print-btn">Print PDF </button>           
+            </div>
+        </div>
+
+        <!-- <img src="icons/barchat.PNG" alt=""> -->
+
+        <div class="map" id="map"></div>
+
+        <!-- <img src="capture.png" alt=""> -->
+        <iframe id="pdf" style="width: 100%; height: 100%;" class="d-none"></iframe>
+
+        <img src="#" alt="" id="my-image">
+        <!-- <canvas id="canvas-container" width="1350" height="915"></canvas> -->
+    </div>
+
+    <script>
+        HTMLCanvasElement.prototype.getContext = function(origFn) {
+          return function(type, attribs) {
+            attribs = attribs || {};
+            attribs.preserveDrawingBuffer = true;
+            return origFn.call(this, type, attribs);
+          };
+        }(HTMLCanvasElement.prototype.getContext);
+        </script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/picker.js" integrity="sha512-f6WsaafWFia+glfiIH85UyfdCVDyJScsVDM70lJhKr2lt2cYyptkiqtVxcxPnh/CduM/FpfL0eC4liTwZMb58g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js"></script>
+    <script src='js/turf.min.js'></script>
+    <script src="js/xlsx.full.min.js"></script>
+    <script src="js/d3.v6.js"></script>
+    <script src="js/turbineLocations.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.10.8/html-to-image.js" integrity="sha512-U8XDCopN6qXPojHomT04a6SrPjPOCTfMVovteM9Jk0eH7787fWEDGgN3gAPm7TKsv5FzJHYYK/lxitXh9vXT2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" integrity="sha512-z8IYLHO8bTgFqj+yrPyIJnzBDf7DDhWwiEsk4sY+Oe6J2M+WQequeGS7qioI5vT6rXgVRb4K1UVQC5ER7MKzKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/main.js"></script>
+
+
+    <!-- #IAMgr3at
+    admin@loadnearme.com -->
+
+
+</body>
+</html>
