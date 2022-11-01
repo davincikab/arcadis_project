@@ -164,11 +164,11 @@ class WindFarmVisual {
     
 
             if(cable['OTDR tested'] && cable['SAT tested']) {
-                color = "#696667";
+                color = "#358600";
             }else if(cable['OTDR tested']) { 
-                color = "#567572";
+                color = "#9EE37D";
             } else if(cable['SAT tested']) {
-                color = "#964F4C";
+                color = "#63C132";
             } else {
                 color = "#000"
             }
@@ -294,11 +294,12 @@ class WindFarmVisual {
         return dd + '/' + mm + '/' + yyyy;
     }
 
-    renderCableProgress() {   
+    renderCableProgress() { 
+        
         let cableTestColors = {
-            "OTDR tested":"#567572",
-            "SAT tested":"#964F4C",
-            "Fully Tested":"#696667"
+            "OTDR tested":"#9EE37D",
+            "SAT tested":"#63C132",
+            "Fully Tested":"#358600"
         };   
 
         
