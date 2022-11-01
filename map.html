@@ -1,0 +1,129 @@
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css" integrity="sha384-z4tVnCr80ZcL0iufVdGQSUzNvJsKjEtqYZjiQrrYKlpGow+btDHDfQWkFjoaz/Zr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+    :root {--white:#fff;--gray:#333;--gray2:#ddd;--black:#000;--blue:#232370;}* {box-sizing: border-box;font-family: 'Poppins', sans-serif !important;}body {margin: 0;padding: 0;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}.map-container{position: relative;font-size: 14px;width:98%; margin:0 auto; margin-top:150px; height: 100vh; overflow: hidden;}.title-section {position: absolute;top: 0;z-index: 2;margin: 0 auto;width: 100%;display: flex;flex-direction: column;align-items: center;justify-content: center;}.title-section h2 {color: #ddd;margin: 0;padding: 0.25rem;font-size: 1rem;background-color: #333;width: auto;}.title-section .date-section {margin-top: 5px;padding: 0.25rem 0.5rem;background-color: #333;color: #ddd;}.timer-container {height:auto;position:absolute;bottom: 0;z-index: 1;left: 250px;color: var(--white);padding:0.5em;background-color: var(--gray);width: 80vw;box-shadow: 1px 2px 0.5em var(--black);display: flex;flex-direction: column;align-items: center;}#timer-container {display: none !important;}.timer-item {display: flex;flex-direction: column;align-items: center;}h3 {margin:2px;text-align: center;}#map {width:100vw;height:100vh;z-index: 0;}.bar-chart {position:absolute;bottom: 10px;left:10px;z-index: 2;background-color: #333;height: 220px;width: 320px;box-shadow: 1px 2px 0.5em var(--black);border-radius: 5px;color:#ddd;}.bar-chart svg text {fill:#ddd;}.title {text-align: center;padding:0.5rem;}.legend-section {position:absolute;top: 10px;right:10px;padding:0.75rem 1rem;border-top-right-radius: 10px;border-bottom-right-radius: 0px;overflow-y: auto;width: 250px;z-index: 1;background-color:#333;box-shadow: 1px 2px 0.5em #ddd;color:#ddd;}.legend-item {display: flex;align-items: center;}.pie-item {display: flex;align-items: center;justify-content: space-between;cursor: pointer;border-bottom: 1px solid #ddd;padding:0.25rem 0;}.pie:last-child {border-bottom: none;}.pie-item.active {background-color: rgba(221, 221, 221, 0.5);}.pie-item > * {pointer-events: none;}.pie-item svg path {}.text-small {font-size: 12px;}.pie-item .more-info {display: flex;flex-direction: column;justify-content: center;align-items: end;}.more-info b {text-align: end;}.cable-progress {position: absolute;top: 0;margin: 10px;padding: 10px;z-index: 2;background-color:#333;color:#ddd;}.progress-section {display: flex;justify-content:end;align-items: center;margin-bottom: 5px;}.progress-tracker {height: 8px;width: 110px;}.progress-section .progress-card {height: 50px;width: 80px;text-align: center;display: flex;border: 1px solid #ddd;border-radius: 5px;align-items: center;justify-content: center;font-size: 12px;}.progress-section .info {display: flex;flex-direction: column;text-align: center;}.div-marker {cursor:pointer;width: 37px;height: 37px;border-radius: 50%;border:2px solid transparent;box-shadow: 0px 0px 0.25rem transparent;}.div-marker svg {margin: -1px;}.div-marker.active {border:2px solid #555;box-shadow: 0px 0px 0.25rem #555;}.div-marker svg path{stroke:black;}.div-marker.in-custody svg path{stroke:white;}.mapboxgl-popup {z-index: 2;width: 250px;}.mapboxgl-popup-content {padding:0 !important;font-size: 1rem;background-color:rgb(67, 67, 67);padding: 5px;color:rgb(187, 187, 187);}.popup-content .popup-title {background-color:rgb(59, 59, 59);padding: 3px 10px 3px 4px;color:var(--white);text-align: center;}.popup-content .popup-entry {display: flex;justify-content: space-between;padding: 5px 5px 5px;font-size:0.8rem;line-height: 15px;}.popup-entry b {font-size: 12px;}.mapboxgl-popup-anchor-top .mapboxgl-popup-tip {border-bottom-color: rgb(67, 67, 67);}.mapboxgl-popup-close-button {font-size: 1.5em;color: var(--white);margin: -5px;}.mapboxgl-marker {cursor: pointer;;}.vessel-info {position: absolute;bottom:50px;right:0px;margin:10px;z-index: 2;background-color: #333;color:white;padding: 0.5rem 0.75rem;}.vessel-info .header-section {font-size: 1.1rem;text-align: center;background: #555;}.vessel-info .btn {background-color: #ddd;color:#333;margin-left: 32px;}.vessel-info .btn:hover {background-color: #ddd;color:#333;}.ship-info {color:#ddd;font-size: 12px;}.ship-info .item-info {display:flex;justify-content: space-between;}.filter-section {position: absolute;bottom:0px;right:0px;margin:10px;z-index: 2;background-color: rgba(255, 255, 255, 0.03);padding: 10px 0;}.filter-section .date-selection {width: 200px;height: 80px;}.pdf-section {margin: 6px auto;display: flex;justify-content: space-between;align-items: center;}.pdf-section .btn {background: #333;color: white;height: 30px;display: flex;justify-content: space-between;align-items: center;}.pdf-section .btn + .btn {margin-left: 5px;}.pdf-section .btn:hover {background-color: rgb(72, 18, 18) !important;color: white;}.date-selection input {width: 90%;}.div-marker-icon {width: 32px;height: 32px;}.div-marker-icon img {width: 28px;}.mapboxgl-popup-content {max-width: 300px;}.popup-content .header-section {font-size: 1.1rem;text-align: center;background: #555;padding: 0.375rem;color:white;}.popup-content .content {height: 250px;overflow-y: auto;padding:0.5rem;font-size: 12px;}.popup-content .item-info {display:flex;justify-content: space-between;}@media print {.bar-chart {background-color: #333;}.legend-section {background-color: #333;}}#pdf {position: absolute;top: 0;z-index: 3;}#my-image {position: absolute;z-index: -1;}
+</style>
+
+<div class="map-container" id="map-container">
+
+    <div class="title-section">
+        <h2>Parkwind Status Tracker for Array Termination</h2>
+
+        <div class="date-section" id="date-section">
+            10/09/2022
+        </div>
+    </div>
+    
+
+    <div class="bar-chart">
+        <div class="title">Z01 - Array Termination progress</div>
+        <div id="bar-progress">
+
+        </div>
+    </div>
+
+    <div class="cable-progress" id="cable-progress">
+        <div>String Progress</div>
+    </div>
+
+
+    <div class="legend-section" id="legend-container">
+       <div id="termination-progress">
+           <div>Termination Progress</div>
+           <div class="termination-section">
+               <div class="pie" id="pie-charts">
+                   <!-- pie chars -->
+               </div>
+
+               <div class="cable-legend">
+                   <div class="cable-section"></div>
+               </div>
+           </div>
+       </div>
+    </div>
+
+    <div class="vessel-info">
+        <div class="header-section">WINDCAT 34</div>
+
+        <div class="ship-info" id="ship-info">
+            <!-- <div class="item-info">
+                <b>MMSI:</b>
+                <span>223838800</span>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="filter-section" id="filter-section">
+        <div class="date-selection d-none">
+            <label for="datepicker">Select Date</label>
+            <div class="input-group date">
+                <input type="text" class="form-control" value="12-02-2012" id="datepicker">
+                <div class="input-group-addon">
+                    <!-- <i class="fa fa-calendar-days"></i> -->
+                    
+                    <i class="fa-solid fa-calendar" style="width: 30px; height: 100%;"></i>
+                    <!-- <span>
+                    </span> -->
+                </div>
+            </div>
+
+        </div>
+
+        <div class="pdf-section">
+            <button class="btn" id="zoom-btn">Zoom To Vessel</button> 
+            <button class="btn btn-submit" id="print-btn">Print PDF </button>           
+        </div>
+    </div>
+
+    <!-- <img src="icons/barchat.PNG" alt=""> -->
+
+    <div class="map" id="map"></div>
+
+    <!-- <img src="capture.png" alt=""> -->
+    <iframe id="pdf" style="width: 100%; height: 100%;" class="d-none"></iframe>
+
+    <img src="#" alt="" id="my-image">
+    <!-- <canvas id="canvas-container" width="1350" height="915"></canvas> -->
+</div>
+
+<script>
+    HTMLCanvasElement.prototype.getContext = function(origFn) {
+      return function(type, attribs) {
+        attribs = attribs || {};
+        attribs.preserveDrawingBuffer = true;
+        return origFn.call(this, type, attribs);
+      };
+    }(HTMLCanvasElement.prototype.getContext);
+    </script>
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/picker.js" integrity="sha512-f6WsaafWFia+glfiIH85UyfdCVDyJScsVDM70lJhKr2lt2cYyptkiqtVxcxPnh/CduM/FpfL0eC4liTwZMb58g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js"></script>
+<script src='https://unpkg.com/@turf/turf@6/turf.min.js'></script>
+<!-- <script src="js/xlsx.full.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" integrity="sha512-r22gChDnGvBylk90+2e/ycr3RVrDi8DIOkIGNhJlKfuyQM4tIRAI062MaV8sfjQKYVGjOBaZBOA87z+IhZE9DA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<!-- <script src="js/turbineLocations.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.10.8/html-to-image.js" integrity="sha512-U8XDCopN6qXPojHomT04a6SrPjPOCTfMVovteM9Jk0eH7787fWEDGgN3gAPm7TKsv5FzJHYYK/lxitXh9vXT2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" integrity="sha512-z8IYLHO8bTgFqj+yrPyIJnzBDf7DDhWwiEsk4sY+Oe6J2M+WQequeGS7qioI5vT6rXgVRb4K1UVQC5ER7MKzKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    mapboxgl.accessToken="pk.eyJ1IjoiZGF1ZGk5NyIsImEiOiJjanJtY3B1bjYwZ3F2NGFvOXZ1a29iMmp6In0.9ZdvuGInodgDk7cv-KlujA";const map=new mapboxgl.Map({container:"map",style:"mapbox://styles/mapbox/streets-v10",center:{lng:13.65614561700636,lat:54.82135678178332},zoom:11.5});var excelUrl="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ0BWu7Gmy6jh1uTcxUD7J_vXVr4SORsSYJD3NPtPYOXpvIsdIbV0UbbpSYVGc2YpJjU7ExOpb0h4Pt/pub?output=xlsx";map.on("load",(function(e){map.addSource("cables",{type:"geojson",data:{type:"FeatureCollection",features:[]}}),map.addLayer({id:"cable",source:"cables",type:"line",paint:{"line-width":3,"line-color":["get","color"]}}),map.addSource("turbines",{type:"geojson",data:turbineLocations}),map.addLayer({id:"turbine",source:"turbines",type:"symbol",paint:{},layout:{"text-field":["get","Name"],"text-justify":"center","text-offset":[0,3],"text-size":10}})}));class WindFarmVisual{constructor(e,t){this.map=e,this.turbineLocations=[],this.activeVisual="progress"}loadData(){return fetch(excelUrl).then((e=>e.arrayBuffer())).then((e=>{var t=XLSX.read(e,{type:"binary",cellDates:!0,dateNF:"dd/mm/yy"});this.sheets=this.processWorkbook(t),this.turbineLocations=this.getTurbineFeatures(this.sheets),this.renderTurbineOnMap(),this.createCables(this.sheets),this.renderBarChart(this.sheets),this.renderProgressLegend(),this.renderCableProgress(),this.fireClickListeners()})).catch(console.error),this}processWorkbook(e){let t=[...e.SheetNames],a={};return t.forEach((t=>{a[t]=XLSX.utils.sheet_to_json(e.Sheets[t],{cellDates:!0,dateNF:"dd/mm/yy"})})),a}getTurbineFeatures(e){return e["FOU Termination Progress"].map((e=>({type:"Feature",geometry:{type:"Point",coordinates:[parseFloat(e.Long),parseFloat(e.Lat)]},properties:{...e}})))}encrichData(e){let t=e["FOU Termination Progress"];this.turbineLocations=this.turbineLocations.map((e=>{let a=t.find((t=>t.Location==e.properties.Name));return e.properties.progress=a?{...a}:{},e}))}createCables(e){let t=this.turbineLocations.map((e=>({name:e.properties.Location,coordinates:[...e.geometry.coordinates]}))),a=e["Cable Progress"];this.cables=a.map((e=>{let a=t.find((t=>t.name==e["End A"])),s=t.find((t=>t.name==e["End B"]));return a&&s&&(e.coords=[s.coordinates,a.coordinates]),e})).filter((e=>e.coords));let s={type:"FeatureCollection",features:[]};s.features=this.cables.map((e=>{let t;return t=e["OTDR tested"]&&e["SAT tested"]?"#00FF00":e["OTDR tested"]?"#FFFF00":e["SAT tested"]?"#b3b300":"#000",{type:"Feature",geometry:{type:"LineString",coordinates:[...e.coords]},properties:{...e,color:t}}})),this.updateSourceCables(s)}updateSourceCables(e){this.map.getSource("cables").setData(e)}createIconMarker(){}createPieMarker(e){let t,{geometry:a,properties:s}=e;if("OSS"==s.Location){let e=["Custody","Hang Off Complete","FO Works Complete","HV Works Complete","QC Walkdown Complete","Out Survey"],a=this.sheets["Z01 Array Termination Progress"].map((t=>e.filter((e=>t[e])).length/e.length*100)).reduce(((e,t)=>e+t),0)/this.sheets["Z01 Array Termination Progress"].length;t=[{label:"Incomplete",status:!0,value:100-parseInt(a),color:"transparent"},{label:"Complete",status:!0,value:a,color:"rgb(125, 181, 88)"}]}else t=[{label:"In Survey",status:s["In Survey"],value:1,color:"#4285F4"},{label:"Hang Off Complete",status:s["Hang Off Complete"],value:1,color:"#EA4335"},{label:"FO Works Complete",status:s["FO Works Complete"],value:1,color:"#FBBC04"},{label:"HV Works Complete",status:s["HV Works Complete"],value:1,color:"#34A853"},{label:"QC Walkdown Complete",status:s["QC Walkdown Complete"],value:1,color:"#FF6D01"},{label:"Out Survey",status:s["Out Survey"],value:1,color:"#46BDC6"}];let o=new PieMarkerElement(t,e.properties.Location),r=Object.keys(e.properties).filter((e=>"label"!=e)).map((t=>{let a=e.properties[t];return a instanceof Date&&(a=this.formatDate(a)),`<div class='popup-entry'>${t}<b>${a}</b></div>`})).join("");var n="<div class='popup-content'><div class='popup-title'><strong>"+e.properties.Location+"</strong></div>"+r+"</div>",i=new mapboxgl.Popup({focusAfterOpen:!1,offset:15}).setHTML(n).setMaxWidth("250px");let l=document.createElement("div");l.classList.add("div-marker"),e.properties.Custody&&l.classList.add("in-custody"),l.innerHTML=o.getSvg();let c=new mapboxgl.Marker({element:l}).setLngLat(a.coordinates).setPopup(i);return c.properties={...e.properties},c}formatDate(e){const t=e.getFullYear();let a=e.getMonth()+1,s=e.getDate();return s<10&&(s="0"+s),a<10&&(a="0"+a),s+"/"+a+"/"+t}renderCableProgress(){let e={"OTDR tested":"#FFFF00","SAT tested":"#b3b300","Fully Tested":"#00FF00"},t=Object.keys(e),a=document.getElementById("cable-progress");t.forEach((t=>{let s=this.cables.filter((e=>e[t])).length,o=`<div class="progress-section">\n                <div class="info">\n                    <div class="progress-tracker" style="background-color:${e[t]};"></div>\n                    <span>${s} of ${this.cables.length} strings</span>\n                </div>\n\n                <div class="progress-card">${t}</div>\n            </div>`;a.innerHTML+=o}))}renderProgressLegend(e){let t=document.getElementById("pie-charts");["Custody","In Survey","Hang Off Complete","FO Works Complete","HV Works Complete","QC Walkdown Complete","Out Survey"].forEach((e=>{let a={[e]:!0},s=new PieMarkerElement([{label:"In Survey",status:a["In Survey"],value:1,color:"#4285F4"},{label:"Hang Off Complete",status:a["Hang Off Complete"],value:1,color:"#EA4335"},{label:"FO Works Complete",status:a["FO Works Complete"],value:1,color:"#FBBC04"},{label:"HV Works Complete",status:a["HV Works Complete"],value:1,color:"#34A853"},{label:"QC Walkdown Complete",status:a["QC Walkdown Complete"],value:1,color:"#FF6D01"},{label:"Out Survey",status:a["Out Survey"],value:1,color:"#46BDC6"}],e,!0),o=this.turbineLocations.filter((t=>t.properties[e]));t.innerHTML+=`<div class="pie-item" id="${e.toLowerCase().split(" ").join("-")}" data-key="${e}">\n                <div>${s.getSvg()}</div>\n                <div class="more-info">\n                    <b>${e}</b>\n                    <div class="text-small">${o.length} of ${this.turbineLocations.length} locations</div>\n                </div>\n            </div>`}))}renderTurbineOnMap(){this.markers=this.turbineLocations.map((e=>{let t=this.createPieMarker(e);return t.addTo(this.map),t}))}renderBarChart(e){let t=e["Z01 Array Termination Progress"],a=["Custody","Hang Off Complete","FO Works Complete","HV Works Complete","QC Walkdown Complete","Out Survey"];BarChart(t.map((e=>{let t=a.filter((t=>e[t])).length/a.length*100,s=100==t?"#7DB558":"#ED7D31";return{name:e.String,value:parseInt(t),color:s}})))}toggleActiveCategory(e){this.markers.forEach((t=>{t.properties[e]?t.getElement().classList.add("active"):t.getElement().classList.remove("active")}))}renderLocationOnDate(e){}fireClickListeners(){let e=document.querySelectorAll(".pie-item");this.activeCategory,e.forEach((t=>{t.onclick=t=>{let{key:a}=t.target.dataset;e.forEach((e=>t.target!=e?e.classList.remove("active"):"")),t.target.classList.toggle("active"),this.activeCategory==a?(this.toggleActiveCategory(""),this.activeCategory=""):(this.toggleActiveCategory(a),this.activeCategory=a)}})),document.getElementById("print-btn").onclick=e=>{this.printPDF()}}printPDF(){this.dateSection=document.getElementById("date-section");let e=document.getElementById("map-container"),t=document.getElementById("filter-section");t.classList.toggle("d-none"),this.dateSection.classList.toggle("d-none"),html2canvas(e,{useCORS:!0,logging:!0}).then((e=>{console.log(e),this.myImage.src=e.toDataURL(),this.myImage.style.transform="rotate(90deg)",t.classList.toggle("d-none"),this.dateSection.innerHTML=this.formatDate(new Date),this.myImage.onload=e=>{html2canvas(this.myImage,{useCORS:!0,logging:!0}).then((e=>{console.log(e.toDataURL()),async function(e){console.log(e);const t=await PDFLib.PDFDocument.create(),s=await t.embedPng(e),o=s.scaleToFit(600,780);console.log(o);const r=t.addPage();console.log(r.getWidth()),r.drawImage(s,{x:120,y:30,width:400,height:o.height});const n=await t.saveAsBase64({dataUri:!0});a.classList.toggle("d-none"),window.open("").document.write(`<style> body {margin:0; padding:0; }</style><iframe id="pdf" style="width: 100%; height: 100%;" src="${n}"></iframe>`)}(e.toDataURL()),this.myImage.src="#"}))}}));let a=document.getElementById("pdf")}}const windFarmVisual=new WindFarmVisual(map,turbineLocations.features);function PieMarkerElement(e,t,a=!1){this.height=35,this.width=35,this.svgId=t,this.radius=Math.min(this.width,this.height)/2-2;var s=d3.pie().value((function(e){return e.value}));this.pieData=s(e),this.pieGenerator=d3.arc().innerRadius(0).outerRadius(this.radius),this.colors={Custody:"#CCFFCC","Stripping/Hangoffs":"blue","Routing & Cleating":"pink","Termination (MV & Fibre)":"black","SAT B":"greenyellow",Walkdowns:"purple",AREI:"brown","SAT C":"skyblue"},this.paths=this.pieData.map((e=>this.pieGenerator(e))),this.getSvg=function(){let e=this.paths.map(((e,t)=>`<path d="${e}" fill="${this.color(this.pieData[t])}" stroke="#fafafa" stroke-width=1></path>`));return`<svg height='${this.height}' width='${this.width}' id=${this.svgId}>"+\n            <g transform='translate(${this.height/2}, ${this.height/2})'>"+\n                ${e.join()}\n            </g>\n        </svg>`},this.color=function(e){return e.data.status?e.data.color:"#75CFF0"}}function BarChart(e){var t=0,a=40,s=40,o=40,r=300-o-a,n=180-t-s,i=d3.select("#bar-progress").append("svg").attr("width",r+o+a).attr("height",n+t+s).append("g").attr("transform","translate("+o+","+t+")"),l=d3.scaleLinear().domain([0,100]).range([0,r]);i.append("g").attr("transform","translate(0,"+n+")").call(d3.axisBottom(l)).selectAll("text").attr("transform","translate(-10,0)rotate(-45)").style("text-anchor","end");var c=d3.scaleBand().range([0,n]).domain(e.map((function(e){return e.name}))).padding(.2);i.append("g").call(d3.axisLeft(c)),i.selectAll("myRect").data(e).enter().append("rect").attr("x",l(0)).attr("y",(function(e){return c(e.name)})).attr("width",(function(e){return l(e.value)})).attr("height",c.bandwidth()).attr("fill",(e=>e.color)),i.selectAll("my-text").data(e).enter().append("text").attr("x",(e=>l(e.value)+5)).attr("y",(function(e){return c(e.name)+10})).text((e=>`${e.value}%`)).style("font-size",10)}map.once("load",(()=>{windFarmVisual.loadData()})),$("#datepicker").datepicker({format:"mm/dd/yyyy",startDate:"-3d"}).on("changeDate",(function(e){console.log(e),windFarmVisual.renderLocationOnDate(e.date),$(".datepicker").hide()}));let url="https://services.marinetraffic.com/api/exportvessel/7daea873a339ac6dadb9847d175b397cea60f977?v=5&mmsi=211696680&timespan=2880&msgtype=extended&protocol=jsono";function updateShipLocation(e){e.length;let t=[+e[0].LON,+e[0].LAT],a=document.createElement("div");a.className="div-marker-icon",a.innerHTML='<img src="icons/ship.png" alt="Wildcat 34" />';let s=new mapboxgl.Marker({element:a}).setLngLat(t).addTo(map),o=`<div class="popup-content">\n        <div class="header-section">WILDCAT 34</div>\n\n        <div class="content">\n            ${Object.keys(e[0]).map((t=>`<div class="item-info">\n            <b>${t}:</b>\n            <span>${e[0][t]}</span>\n        </div>`)).join("")}\n        </div>\n    </div>`,r=new mapboxgl.Popup;r.setHTML(o),s.setPopup(r),document.getElementById("zoom-btn").onclick=e=>{map.flyTo({center:t,zoom:12})}}function updateShipInfo(e){let t=["LAST_PORT_TIME","LAST_PORT","DESTINATION","ETA"].map((t=>`<div class="item-info">\n            <b>${t}:</b>\n            <span>${e[0][t]}</span>\n        </div>`));document.getElementById("ship-info").innerHTML=t.join("")}fetch(url).then((e=>e.json())).then((e=>{console.log(e),updateShipInfo(e),updateShipLocation(e)})).catch(console.error);
+</script>
+

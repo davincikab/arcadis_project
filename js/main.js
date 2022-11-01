@@ -1,3 +1,4 @@
+const vesselIcon = "data:image/png;base64,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";
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGF1ZGk5NyIsImEiOiJjanJtY3B1bjYwZ3F2NGFvOXZ1a29iMmp6In0.9ZdvuGInodgDk7cv-KlujA';
 const map = new mapboxgl.Map({
     container: 'map',
@@ -28,7 +29,7 @@ map.on('load', function(e) {
     // turbine names
     map.addSource('turbines',{
         type:'geojson',
-        data:turbineLocations
+        data:{ "type":"FeatureCollection", "features":[] }
     });
 
     map.addLayer({
@@ -39,7 +40,7 @@ map.on('load', function(e) {
             
         },
         layout:{
-            'text-field':['get', 'Name'],
+            'text-field':['get', 'Location'],
             'text-justify':'center',
             'text-offset':[0, 3],
             'text-size':10
@@ -67,6 +68,12 @@ class WindFarmVisual {
 
                 // add the info
                 this.turbineLocations = this.getTurbineFeatures(this.sheets);
+
+                map.getSource('turbines')
+                    .setData(
+                        {'type':"FeatureCollection", 
+                        "features":[...this.turbineLocations]
+                    });
                 // this.encrichData(this.sheets);
 
                 this.renderTurbineOnMap();
@@ -154,13 +161,14 @@ class WindFarmVisual {
         let cableGeojson = { "type":"FeatureCollection", "features":[] };
         cableGeojson.features = this.cables.map(cable => {
             let color;
+    
 
             if(cable['OTDR tested'] && cable['SAT tested']) {
-                color = '#00FF00';
+                color = "#696667";
             }else if(cable['OTDR tested']) { 
-                color = '#FFFF00' 
+                color = "#567572";
             } else if(cable['SAT tested']) {
-                color = '#b3b300';
+                color = "#964F4C";
             } else {
                 color = "#000"
             }
@@ -177,13 +185,6 @@ class WindFarmVisual {
 
 
     updateSourceCables(cableJson) {
-        let cableTestColors = {
-            "Cable Laid":"#000000",
-            "HV Resonance tested":"#FFC000",
-            "OTDR tested":"#FF0000",
-            "Pre-tested":"#00B0F0",
-        }
-
         this.map.getSource('cables').setData(cableJson);
     }
 
@@ -209,12 +210,16 @@ class WindFarmVisual {
                 return value;
             }).reduce((a,b) => a + b, 0);
 
-            let completValue = valueData/this.sheets['Z01 Array Termination Progress'].length;
-            let incompleteValue = 100 - parseInt(completValue);
+            let completeValue = valueData/this.sheets['Z01 Array Termination Progress'].length;
+            let incompleteValue = 100 - parseInt(completeValue);
 
             data = [
-                { label:"Incomplete", status:true, value:incompleteValue, color:'transparent'},
-                { label:"Complete", status:true, value:completValue, color:'rgb(125, 181, 88)'}
+                // { label:"Incomplete", status:true, value:incompleteValue, color:'red'},
+                // { label:"Complete", status:true, value:completeValue, color:'green'},
+                
+                
+                { label:"Incomplete", status:true, value:completeValue, color:'green'},
+                { label:"complete", status:true, value:incompleteValue, color:'red'}
             ];
 
         } else {
@@ -289,19 +294,14 @@ class WindFarmVisual {
         return dd + '/' + mm + '/' + yyyy;
     }
 
-    renderCableProgress() {
-        // let cableTestColors = {
-        //     "Cable Laid":"#000000",
-        //     "HV Resonance tested":"#FFC000",
-        //     "OTDR tested":"#FF0000",
-        //     "Pre-tested":"#00B0F0",
-        // };
+    renderCableProgress() {   
         let cableTestColors = {
-            "OTDR tested":"#FFFF00",
-            "SAT tested":"#b3b300",
-            "Fully Tested":"#00FF00"
-        };
+            "OTDR tested":"#567572",
+            "SAT tested":"#964F4C",
+            "Fully Tested":"#696667"
+        };   
 
+        
         let keys = Object.keys(cableTestColors);
         let cableTestSection = document.getElementById("cable-progress");
 
@@ -525,7 +525,7 @@ class WindFarmVisual {
 }
 
 
-const windFarmVisual = new WindFarmVisual(map, turbineLocations.features);
+const windFarmVisual = new WindFarmVisual(map, []);
 map.once('load', () => {
     windFarmVisual
     .loadData()
@@ -540,7 +540,7 @@ function PieMarkerElement(data, pointName, isLegend=false) {
        
     this.radius = Math.min(this.width, this.height) / 2 - 2;
     
-    var pie = d3.pie().value(function(d) { return d.value});
+    var pie = d3.pie().value(function(d) { return d.value}).sort(null);
     this.pieData = pie(data);
     
     this.pieGenerator = d3.arc().innerRadius(0).outerRadius(this.radius);
@@ -654,11 +654,15 @@ let url = "https://services.marinetraffic.com/api/exportvessel/7daea873a339ac6da
 fetch(url)
 .then(res => res.json())
 .then(shipInfo => {
+    if(shipInfo.errors) {
+        throw new Error(shipInfo)
+    }
     console.log(shipInfo);
 
     // desctructre the response
-    updateShipInfo(shipInfo);
+    
     updateShipLocation(shipInfo);
+    updateShipInfo(shipInfo);
 })
 .catch(console.error);
 
@@ -667,10 +671,12 @@ function updateShipLocation(info) {
         // render a path
     }
 
-    let coordinates = [+info[0].LON, +info[0].LAT];
+    // let coordinates = [+info[0].LON, +info[0].LAT];
+    // let coordinates = [13.65614561700636, 54.82135678178332];
+
     let el = document.createElement("div");
     el.className = "div-marker-icon";
-    el.innerHTML = '<img src="icons/ship.png" alt="Wildcat 34" />'
+    el.innerHTML = `<img src="${vesselIcon}" alt="Wildcat 34" />`;
 
     let markerLocation = new mapboxgl.Marker({element:el})
         .setLngLat(coordinates)
@@ -724,4 +730,12 @@ function updateShipInfo(info) {
     });
 
     document.getElementById("ship-info").innerHTML = infoVals.join("");
+}
+
+
+// resize map container to screen height
+document.onload = function(e) {
+    let mapContainer = document.querySelector(".map-container");
+
+    // mapContainer.style.height = `${window.innerHeight}px`;
 }
