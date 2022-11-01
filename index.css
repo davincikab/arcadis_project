@@ -293,7 +293,7 @@ h3 {
 
 .vessel-info {
     position: absolute;
-    bottom:50px;
+    bottom:120px;
     right:0px;
     margin:10px;
     z-index: 2;
@@ -332,7 +332,7 @@ h3 {
 /* filter section */
 .filter-section {
     position: absolute;
-    bottom:0px;
+    bottom:60px;
     right:0px;
     margin:10px;
     z-index: 2;

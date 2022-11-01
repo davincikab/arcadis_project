@@ -295,7 +295,7 @@ class WindFarmVisual {
     }
 
     renderCableProgress() { 
-        
+
         let cableTestColors = {
             "OTDR tested":"#9EE37D",
             "SAT tested":"#63C132",
@@ -312,7 +312,7 @@ class WindFarmVisual {
             let section = `<div class="progress-section">
                 <div class="info">
                     <div class="progress-tracker" style="background-color:${cableTestColors[key]};"></div>
-                    <span>${count} of ${this.cables.length} strings</span>
+                    <span>${count} of ${this.cables.length} cables</span>
                 </div>
 
                 <div class="progress-card">${key}</div>
