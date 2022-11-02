@@ -225,7 +225,7 @@ class WindFarmVisual {
                 
                 
                 { label:"Incomplete", status:true, value:completeValue, color:'green'},
-                { label:"complete", status:true, value:incompleteValue, color:'red'}
+                { label:"complete", status:true, value:incompleteValue, color:'#75CFF0'}
             ];
 
         } else {
@@ -235,7 +235,7 @@ class WindFarmVisual {
                 { label:"FO Works Complete", status:properties["FO Works Complete"], value:1, color:'#FBBC04'},
                 { label:"HV Works Complete", status:properties["HV Works Complete"], value:1, color:'#34A853'},
                 { label:"QC Walkdown Complete", status:properties["QC Walkdown Complete"], value:1, color:'#FF6D01'},
-                { label:"Out Survey", status:properties["Out Survey"], value:1, color:'#46BDC6'}
+                { label:"Out Survey", status:properties["Out Survey"], value:1, color:'#333'}
             ];
         }
         
@@ -350,7 +350,7 @@ class WindFarmVisual {
                 { label:"FO Works Complete", status:properties["FO Works Complete"], value:1, color:'#FBBC04'},
                 { label:"HV Works Complete", status:properties["HV Works Complete"], value:1, color:'#34A853'},
                 { label:"QC Walkdown Complete", status:properties["QC Walkdown Complete"], value:1, color:'#FF6D01'},
-                { label:"Out Survey", status:properties["Out Survey"], value:1, color:'#46BDC6'}
+                { label:"Out Survey", status:properties["Out Survey"], value:1, color:'#333'}
             ];
             
             let element = new PieMarkerElement(data, key, true);
