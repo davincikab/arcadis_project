@@ -70,7 +70,7 @@ body {
     position: absolute;
     top: 0;
     z-index: 2;
-    margin: 0 auto;
+    margin: 10px auto;
     /* left: 30vw; */
     
     width: 100%;

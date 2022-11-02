@@ -457,6 +457,8 @@ class WindFarmVisual {
         elementNode.classList.toggle('d-none');
         this.myImage = document.getElementById("my-image");
 
+        if(vesselLocation) vesselLocation.remove();
+
         
         this.dateSection.classList.toggle('d-none');
         html2canvas(node, {
@@ -480,6 +482,8 @@ class WindFarmVisual {
                     createPdf(canvas.toDataURL(), date);
                     this.myImage.src = "#"
                     // this.dateSection.classList.toggle('d-none');
+
+                    if(vesselLocation) vesselLocation.addTo(map);
                 });
             }
             
@@ -699,6 +703,7 @@ fetch(url)
 })
 .catch(console.error);
 
+var vesselLocation;
 function updateShipLocation(info) {
     if(info.length > 1) {
         // render a path
@@ -711,9 +716,9 @@ function updateShipLocation(info) {
     el.className = "div-marker-icon";
     el.innerHTML = `<img src="${vesselIcon}" alt="Wildcat 34" />`;
 
-    let markerLocation = new mapboxgl.Marker({element:el})
+    vesselLocation = new mapboxgl.Marker({element:el})
         .setLngLat(coordinates)
-        .addTo(map)
+        .addTo(map);
 
     // popup
     let contentInfo = Object.keys(info[0]).map(key => {
