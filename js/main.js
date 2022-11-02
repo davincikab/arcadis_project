@@ -495,7 +495,7 @@ class WindFarmVisual {
             const pdfDoc = await PDFLib.PDFDocument.create();
 
             const pngImage = await pdfDoc.embedPng(imageBuffer);
-            const pngDims = pngImage.scaleToFit(600, 780);
+            const pngDims = pngImage.scaleToFit(500, 780);
 
             // console.log(pngDims);
 
@@ -505,7 +505,7 @@ class WindFarmVisual {
             page.drawImage(pngImage, {
                 x: 120,
                 y: 30,
-                width: 400,
+                width: 360,
                 height: pngDims.height,
             });
 
