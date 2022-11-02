@@ -446,7 +446,7 @@ class WindFarmVisual {
         let node = document.getElementById("map-container");
         let elementNode = document.getElementById("filter-section");
         elementNode.classList.toggle('d-none');
-        // this.myImage = document.getElementById("my-image");
+        this.myImage = document.getElementById("my-image");
 
         
         this.dateSection.classList.toggle('d-none');
