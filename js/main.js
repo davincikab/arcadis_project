@@ -186,6 +186,12 @@ class WindFarmVisual {
 
     updateSourceCables(cableJson) {
         this.map.getSource('cables').setData(cableJson);
+
+        let bbox = turf.bbox(cableJson);
+
+        this.map.fitBounds(bbox, {
+            padding: 70
+        });
     }
 
     createIconMarker() {
@@ -441,6 +447,8 @@ class WindFarmVisual {
     }
 
     printPDF() {
+        this.map.fitBounds([]);
+
         this.dateSection = document.getElementById("date-section");
 
         let node = document.getElementById("map-container");
@@ -467,8 +475,8 @@ class WindFarmVisual {
                 .then(canvasContainer => {
                     // console.log(canvasContainer.toDataURL());
 
-                    createPdf(canvasContainer.toDataURL());
-
+                    let date = this.formatDate(new Date()).replace(/\//g, "-");
+                    createPdf(canvasContainer.toDataURL(), date);
                     this.myImage.src = "#"
                     // this.dateSection.classList.toggle('d-none');
                 });
@@ -480,7 +488,7 @@ class WindFarmVisual {
         });
 
         // let pdfDocEl = document.getElementById('pdf');
-        async function createPdf(imageBuffer) {
+        async function createPdf(imageBuffer, currentDate) {
             // console.log(imageBuffer);
 
             const pdfDoc = await PDFLib.PDFDocument.create();
@@ -525,9 +533,10 @@ class WindFarmVisual {
             // document.getElementById("modal-container").style.display = "block";
 
             // var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(storageObj));
+            // let date = new Date();
             var dlAnchorElem = document.getElementById('downloadAnchorElem');
             dlAnchorElem.setAttribute("href",     pdfDataUri    );
-            dlAnchorElem.setAttribute("download", "map.pdf");
+            dlAnchorElem.setAttribute("download", `map_${currentDate}.pdf`);
             dlAnchorElem.click();
 
             // window.parent.localStorage.setItem("info", info);
