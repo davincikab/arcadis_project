@@ -769,3 +769,5 @@ document.onload = function(e) {
 
     // mapContainer.style.height = `${window.innerHeight}px`;
 }
+
+document.getElementById("date-section").innerHTML = windFarmVisual.formatDate(new Date());
