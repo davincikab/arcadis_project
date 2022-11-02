@@ -447,8 +447,6 @@ class WindFarmVisual {
     }
 
     printPDF() {
-        this.map.fitBounds([]);
-
         this.dateSection = document.getElementById("date-section");
 
         let node = document.getElementById("map-container");
