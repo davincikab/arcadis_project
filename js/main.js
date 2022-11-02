@@ -508,8 +508,8 @@ class WindFarmVisual {
 
             pdfDocEl.classList.toggle("d-none");
 
-            var w = window.parent.open("");
-            console.log(w);
+            // var w = window.parent.open("");
+            // console.log(w);
 
             let info = `<style> body {margin:0; padding:0; }</style><iframe id="pdf" style="width: 100%; height: 100%;" src="${pdfDataUri}"></iframe>`
             // w.document.write(info);
