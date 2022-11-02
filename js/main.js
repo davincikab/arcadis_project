@@ -477,7 +477,7 @@ class WindFarmVisual {
                     // console.log(canvasContainer.toDataURL());
 
                     let date = this.formatDate(new Date()).replace(/\//g, "-");
-                    createPdf(canvasContainer.toDataURL(), date);
+                    createPdf(canvas.toDataURL(), date);
                     this.myImage.src = "#"
                     // this.dateSection.classList.toggle('d-none');
                 });
