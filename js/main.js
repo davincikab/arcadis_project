@@ -479,7 +479,7 @@ class WindFarmVisual {
             // 
         });
 
-        let pdfDocEl = document.getElementById('pdf');
+        // let pdfDocEl = document.getElementById('pdf');
         async function createPdf(imageBuffer) {
             // console.log(imageBuffer);
 
@@ -506,16 +506,32 @@ class WindFarmVisual {
             const pdfDataUri = await pdfDoc.saveAsBase64({ dataUri: true });
             // pdfDocEl.src = pdfDataUri;
 
-            pdfDocEl.classList.toggle("d-none");
+            // pdfDocEl.classList.toggle("d-none");
 
             // var w = window.parent.open("");
             // console.log(w);
 
-            let info = `<style> body {margin:0; padding:0; }</style><iframe id="pdf" style="width: 100%; height: 100%;" src="${pdfDataUri}"></iframe>`
-            // w.document.write(info);
-            
-            window.parent.postMessage(info, 'https://smart-projex.com')
-            window.localStorage.setItem("info", info);
+            // let info = `<iframe id="pdf" style="width: 100%; height: 100%;" src="${pdfDataUri}"></iframe>`;
+            // let info = `<iframe 
+            //     src="${pdfDataUri}"
+            //     width="600" height="780" 
+            //     style="position: absolute;top: 0px;bottom: 0px;right: 0px;width: 100%;border: none;margin: 0;padding: 0;;z-index: 3;height: 100%;"
+            // ></iframe>`;
+
+            // // w.document.write(info);
+
+            // console.log(info);
+            // document.getElementById("modal-body-container").innerHTML = info;
+            // document.getElementById("modal-container").style.display = "block";
+
+            // var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(storageObj));
+            var dlAnchorElem = document.getElementById('downloadAnchorElem');
+            dlAnchorElem.setAttribute("href",     pdfDataUri    );
+            dlAnchorElem.setAttribute("download", "map.pdf");
+            dlAnchorElem.click();
+
+            // window.parent.localStorage.setItem("info", info);
+            // window.parent.postMessage(info, 'https://smart-projex.com');
         }
 
         // htmlToImage.toPng(node)
