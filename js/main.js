@@ -511,7 +511,10 @@ class WindFarmVisual {
             var w = window.parent.open("");
             console.log(w);
 
-            w.document.write(`<style> body {margin:0; padding:0; }</style><iframe id="pdf" style="width: 100%; height: 100%;" src="${pdfDataUri}"></iframe>`);
+            let info = `<style> body {margin:0; padding:0; }</style><iframe id="pdf" style="width: 100%; height: 100%;" src="${pdfDataUri}"></iframe>`
+            w.document.write(info);
+            
+            window.parent.postMessage(info, 'https://smart-projex.com')
         }
 
         // htmlToImage.toPng(node)
