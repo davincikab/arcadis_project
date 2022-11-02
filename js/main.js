@@ -455,7 +455,7 @@ class WindFarmVisual {
             logging: true,
             // allowTaint:false
         }).then(canvas => {
-            console.log(canvas);
+            // console.log(canvas);
             this.myImage.src = canvas.toDataURL();
             this.myImage.style.transform = "rotate(90deg)";
 
@@ -465,7 +465,7 @@ class WindFarmVisual {
             this.myImage.onload = (e) => {
                 html2canvas(this.myImage, { useCORS: true, logging: true})
                 .then(canvasContainer => {
-                    console.log(canvasContainer.toDataURL());
+                    // console.log(canvasContainer.toDataURL());
 
                     createPdf(canvasContainer.toDataURL());
 
@@ -481,17 +481,17 @@ class WindFarmVisual {
 
         let pdfDocEl = document.getElementById('pdf');
         async function createPdf(imageBuffer) {
-            console.log(imageBuffer);
+            // console.log(imageBuffer);
 
             const pdfDoc = await PDFLib.PDFDocument.create();
 
             const pngImage = await pdfDoc.embedPng(imageBuffer);
             const pngDims = pngImage.scaleToFit(600, 780);
 
-            console.log(pngDims);
+            // console.log(pngDims);
 
             const page = pdfDoc.addPage();
-            console.log(page.getWidth())
+            // console.log(page.getWidth())
 
             page.drawImage(pngImage, {
                 x: 120,
