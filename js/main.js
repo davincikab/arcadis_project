@@ -314,6 +314,9 @@ class WindFarmVisual {
 
         keys.forEach(key => {
             let count = this.cables.filter(cable => cable[key]).length;
+            if(key == "Fully Tested") {
+                count = this.cables.filter(cable => cable["OTDR tested"] && cable["SAT tested"]).length;
+            }
 
             let section = `<div class="progress-section">
                 <div class="info">
