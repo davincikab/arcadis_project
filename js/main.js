@@ -466,7 +466,7 @@ class WindFarmVisual {
         }).then(canvas => {
             // console.log(canvas);
             this.myImage.src = canvas.toDataURL();
-            this.myImage.style.transform = "rotate(90deg)";
+            // this.myImage.style.transform = "rotate(90deg)";
 
             elementNode.classList.toggle('d-none');
             this.dateSection.innerHTML = this.formatDate(new Date());
@@ -490,7 +490,7 @@ class WindFarmVisual {
 
         // let pdfDocEl = document.getElementById('pdf');
         async function createPdf(imageBuffer, currentDate) {
-            // console.log(imageBuffer);
+            console.log(imageBuffer);
 
             const pdfDoc = await PDFLib.PDFDocument.create();
 
@@ -536,8 +536,8 @@ class WindFarmVisual {
             // var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(storageObj));
             // let date = new Date();
             var dlAnchorElem = document.getElementById('downloadAnchorElem');
-            dlAnchorElem.setAttribute("href",     pdfDataUri    );
-            dlAnchorElem.setAttribute("download", `map_${currentDate}.pdf`);
+            dlAnchorElem.setAttribute("href",     imageBuffer    );
+            dlAnchorElem.setAttribute("download", `map_${currentDate}.png`);
             dlAnchorElem.click();
 
             // window.parent.localStorage.setItem("info", info);
