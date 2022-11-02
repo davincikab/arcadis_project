@@ -198,6 +198,10 @@ h3 {
     pointer-events: none;
 }
 
+.d-none {
+    display: none !important;
+}
+
 .pie-item svg path {
     /* fill:hsla(0, 0%, 13%, 0.282); */
 }
