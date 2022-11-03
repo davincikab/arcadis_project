@@ -738,7 +738,7 @@ function updateShipLocation(info) {
     let popup = new mapboxgl.Popup();
     popup.setHTML(popupContent)
 
-    markerLocation.setPopup(popup);
+    vesselLocation.setPopup(popup);
 
 
     document.getElementById("zoom-btn").onclick = (e) => {
