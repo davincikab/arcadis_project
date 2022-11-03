@@ -460,7 +460,7 @@ class WindFarmVisual {
         if(vesselLocation) vesselLocation.remove();
 
         
-        this.dateSection.classList.toggle('d-none');
+        // this.dateSection.classList.toggle('d-none');
         html2canvas(node, {
             useCORS: true,
             logging: true,
@@ -697,7 +697,6 @@ fetch(url)
     console.log(shipInfo);
 
     // desctructre the response
-    
     updateShipLocation(shipInfo);
     updateShipInfo(shipInfo);
 })
@@ -709,7 +708,7 @@ function updateShipLocation(info) {
         // render a path
     }
 
-    // let coordinates = [+info[0].LON, +info[0].LAT];
+    let coordinates = [+info[0].LON, +info[0].LAT];
     // let coordinates = [13.65614561700636, 54.82135678178332];
 
     let el = document.createElement("div");
