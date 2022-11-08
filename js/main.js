@@ -539,9 +539,12 @@ class WindFarmVisual {
 
             // var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(storageObj));
             // let date = new Date();
+            currentDate = currentDate.split("/").reverse().join("");
+            currentDate = "05/11/2022".split("/").reverse().join("");
+
             var dlAnchorElem = document.getElementById('downloadAnchorElem');
             dlAnchorElem.setAttribute("href",     imageBuffer    );
-            dlAnchorElem.setAttribute("download", `map_${currentDate}.png`);
+            dlAnchorElem.setAttribute("download", `${currentDate} Parkwind Status Map.png`);
             dlAnchorElem.click();
 
             // window.parent.localStorage.setItem("info", info);
@@ -778,5 +781,4 @@ document.onload = function(e) {
 }
 
 document.getElementById("date-section").innerHTML = "05/11/2022";
-
 // document.getElementById("date-section").innerHTML = windFarmVisual.formatDate(new Date());
