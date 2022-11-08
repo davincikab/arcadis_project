@@ -777,6 +777,6 @@ document.onload = function(e) {
     // mapContainer.style.height = `${window.innerHeight}px`;
 }
 
-document.getElementById("date-section").innerHTML = "04/11/2022";
+document.getElementById("date-section").innerHTML = "05/11/2022";
 
 // document.getElementById("date-section").innerHTML = windFarmVisual.formatDate(new Date());
