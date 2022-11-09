@@ -540,7 +540,7 @@ class WindFarmVisual {
             // var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(storageObj));
             // let date = new Date();
             currentDate = currentDate.split("/").reverse().join("");
-            currentDate = "05/11/2022".split("/").reverse().join("");
+            currentDate = "06/11/2022".split("/").reverse().join("");
 
             var dlAnchorElem = document.getElementById('downloadAnchorElem');
             dlAnchorElem.setAttribute("href",     imageBuffer    );
