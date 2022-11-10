@@ -540,7 +540,7 @@ class WindFarmVisual {
             // var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(storageObj));
             // let date = new Date();
             currentDate = currentDate.split("/").reverse().join("");
-            currentDate = "08/11/2022".split("/").reverse().join("");
+            // currentDate = "08/11/2022".split("/").reverse().join("");
 
             var dlAnchorElem = document.getElementById('downloadAnchorElem');
             dlAnchorElem.setAttribute("href",     imageBuffer    );
@@ -780,5 +780,5 @@ document.onload = function(e) {
     // mapContainer.style.height = `${window.innerHeight}px`;
 }
 
-document.getElementById("date-section").innerHTML = "08/11/2022";
-// document.getElementById("date-section").innerHTML = windFarmVisual.formatDate(new Date());
+// document.getElementById("date-section").innerHTML = "08/11/2022";
+document.getElementById("date-section").innerHTML = windFarmVisual.formatDate(new Date());
