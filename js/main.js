@@ -103,7 +103,9 @@ class WindFarmVisual {
     }
 
     getTurbineFeatures(sheets) {
-        return sheets['FOU Termination Progress'].map(ft => {
+        console.log(sheets['FOU Termination Progress']);
+
+        return sheets['FOU Termination Progress'].slice(0, -1).map(ft => {
             return {
                 "type":"Feature",
                 "geometry":{
@@ -373,6 +375,7 @@ class WindFarmVisual {
 
     renderTurbineOnMap() {
         this.markers = this.turbineLocations.map(location => {
+            console.log(location);
             let marker = this.createPieMarker(location);
 
             marker.addTo(this.map);
