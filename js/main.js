@@ -676,17 +676,17 @@ function BarChart(data) {
 
 // date picker
 // The date picker (read the docs)
-$('#datepicker').datepicker({
-    format: 'mm/dd/yyyy',
-    startDate: '-3d'
-})
-.on('changeDate', function(e) {
-    console.log(e);
+// $('#datepicker').datepicker({
+//     format: 'mm/dd/yyyy',
+//     startDate: '-3d'
+// })
+// .on('changeDate', function(e) {
+//     console.log(e);
 
-    windFarmVisual.renderLocationOnDate(e.date);
+//     windFarmVisual.renderLocationOnDate(e.date);
 
-    $('.datepicker').hide();
-})
+//     $('.datepicker').hide();
+// })
 
 
 // vessel location 
